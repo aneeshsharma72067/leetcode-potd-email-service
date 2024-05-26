@@ -121,18 +121,6 @@ app.get("/potd", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
-cron.schedule(
-  "40 10 * * *",
-  () => {
-    console.log("Running email job at 8:00AM");
-    sendEmail("Sent by Node Cron");
-  },
-  {
-    scheduled: true,
-    timezone: "Asia/Kolkata",
-  }
-);
-
 app.listen(PORT, () => {
   console.log(`Server listening at  http://localhost:${PORT}`);
 });
