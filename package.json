@@ -11,5 +11,19 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
-  }
+  },
+  "name": "potdemailservicejs",
+  "description": "This is a Email Service for Leetcode Problem of the Day, it sends an email to specified mail's at 8:00AM daily",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aneeshsharma72067/leetcode-potd-email-service.git"
+  },
+  "author": "Aneesh Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aneeshsharma72067/leetcode-potd-email-service/issues"
+  },
+  "homepage": "https://github.com/aneeshsharma72067/leetcode-potd-email-service#readme"
 }
