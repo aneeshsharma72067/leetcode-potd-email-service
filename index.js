@@ -120,7 +120,7 @@ app.get("/potd", async (req, res) => {
 });
 
 cron.schedule(
-  "0 8 * * *",
+  "21 10 * * *",
   () => {
     console.log("Running email job at 8:00AM");
     sendEmail();
