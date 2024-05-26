@@ -20,13 +20,13 @@ const transport = nodemailer.createTransport({
 
 app.get("/", (req, res) => {
   console.log(process.env.TEMP_DATA);
-  sendEmail();
+  sendEmail("Sent by vercel cron jobs");
   res.json({
     Service: "Leetcode POTD Service",
   });
 });
 
-const sendEmail = async () => {
+const sendEmail = async (extra = "") => {
 
   const endpoint = "https://leetcode.com/graphql";
   const query = `
@@ -68,7 +68,7 @@ const sendEmail = async () => {
           from: "noreply@gmail.com",
           to: "as416106@gmail.com",
           subject: "Leetcode POTD",
-          html: `Sent at 10:35, \nHere is the today's Leetcode Problem of the Day<br><a href="https://leetcode.com/${POTD.link}">${POTD.question.title}</a><br>\nDifficulty:${POTD.question.difficulty}<br>\nAccuracy:${POTD.question.acRate}<br><br>${originalContent}`,
+          html: `${extra}, \nHere is the today's Leetcode Problem of the Day<br><a href="https://leetcode.com/${POTD.link}">${POTD.question.title}</a><br>\nDifficulty:${POTD.question.difficulty}<br>\nAccuracy:${POTD.question.acRate}<br><br>${originalContent}`,
         })
         .then((r) => {
           console.log(r.accepted, "SUCCESS");
@@ -122,10 +122,10 @@ app.get("/potd", async (req, res) => {
 });
 
 cron.schedule(
-  "35 10 * * *",
+  "40 10 * * *",
   () => {
     console.log("Running email job at 8:00AM");
-    sendEmail();
+    sendEmail("Sent by Node Cron");
   },
   {
     scheduled: true,
