@@ -20,6 +20,7 @@ const transport = nodemailer.createTransport({
 
 app.get("/", (req, res) => {
   console.log(process.env.TEMP_DATA);
+  sendEmail();
   res.json({
     Service: "Leetcode POTD Service",
   });
