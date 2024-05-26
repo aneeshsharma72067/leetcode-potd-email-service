@@ -20,7 +20,7 @@ const transport = nodemailer.createTransport({
 
 app.get("/", (req, res) => {
   console.log(process.env.TEMP_DATA);
-  sendEmail("Sent by vercel cron jobs");
+  sendEmail();
   res.json({
     Service: "Leetcode POTD Service",
   });
@@ -68,7 +68,7 @@ const sendEmail = async (extra = "") => {
           from: "noreply@gmail.com",
           to: "as416106@gmail.com",
           subject: "Leetcode POTD",
-          html: `${extra}, \nHere is the today's Leetcode Problem of the Day<br><a href="https://leetcode.com/${POTD.link}">${POTD.question.title}</a><br>\nDifficulty:${POTD.question.difficulty}<br>\nAccuracy:${POTD.question.acRate}<br><br>${originalContent}`,
+          html: `${extra} \nHere is the today's Leetcode Problem of the Day<br><a href="https://leetcode.com/${POTD.link}">${POTD.question.title}</a><br>\nDifficulty:${POTD.question.difficulty}<br>\nAccuracy:${POTD.question.acRate}<br><br>${originalContent}`,
         })
         .then((r) => {
           console.log(r.accepted, "SUCCESS");
